@@ -25,7 +25,7 @@ namespace CGHelper
             {
                 while (true)
                 {
-                    Thread.Sleep(5);
+                    Thread.Sleep(500);
                     if (InvokeRequired)
                     {
                         Invoke(new Action(Refresh));

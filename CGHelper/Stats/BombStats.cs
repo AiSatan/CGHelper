@@ -13,15 +13,7 @@ namespace CGHelper.Stats
         {
             var bmpSource = Helper.GetBitmap(703, 3, 30, 10);
 
-//            var grayscaleFilter = new Grayscale(0.0125, 0.0154, 0.0021);
-//            var bmp = grayscaleFilter.Apply(bmpSource);
-//
-//            var grayRemover = new SISThreshold();
-//            grayRemover.ApplyInPlace(bmp);
-//
-//            var resizer = new ResizeBicubic(20, 20);
-//            bmp = resizer.Apply(bmp);
-
+            const int defBombTime = 70; //35*2
 
             ImageStatistics stat = new ImageStatistics(bmpSource);
 
@@ -34,24 +26,22 @@ namespace CGHelper.Stats
             }
             else
             {
-                _seconds = 400;
+                _seconds = defBombTime;
             }
-            //g.DrawString($"{(int)red}:{(int)green}:{(int)blue}", new Font("Console", 10), Brushes.Red, 660, 760);
 
-            //            }
+            var bombStr = $"{_seconds / 2}";
 
-
-
-            //            g.DrawString($"{Skills.TheSwarm.ToString()}: {data[(int)Skills.TheSwarm]}", new Font("Console", 10), Brushes.Red, 660, 660);
-            //            g.DrawString($"{Skills.Shukuchi.ToString()}: {data[(int)Skills.Shukuchi]}", new Font("Console", 10), Brushes.Red, 660, 680);
-            //            g.DrawString($"{Skills.Geminate.ToString()}: {data[(int)Skills.Geminate]}", new Font("Console", 10), Brushes.Red, 660, 700);
-            //            g.DrawString($"{Skills.TimeLapse.ToString()}: {data[(int)Skills.TimeLapse]}", new Font("Console", 10), Brushes.Red, 660, 720);
-            //g.DrawImage(bmpSource, 470, 400);
-            if (_seconds == 400)
+            if (_seconds == defBombTime)
             {
-                return;
+                bombStr = "-";
             }
-            g.DrawString($"{_seconds}", new Font("Console", 10), Brushes.Red, 660, 460);
+
+            var brush = Brushes.White;
+            if (_seconds < 10)
+            {
+                brush = Brushes.Red;
+            }
+            g.DrawString($"{bombStr}", new Font("Console", 10), brush, 660, 460);
         }
     }
 }
