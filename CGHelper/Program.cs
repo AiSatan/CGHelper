@@ -1,21 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Dota2AdInfo;
+using System.Timers;
+using CGHelper.Stats;
+using RedOverUI;
 
 namespace CGHelper
 {
-    class Program
+    internal class Program
     {
-        [STAThread]
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Console.Write("CS:GO Helper running..");
+            var timer = new Timer(500);
+            timer.Elapsed += (sender, e) => RedOverlay.Refresh();
+            
+            RedOverlay.OnShown += () =>
+            {
+                // ReSharper disable once AccessToDisposedClosure
+                timer?.Start();
+                Console.Write("..done");
+            };
+
+            RedOverlay.OnUpdate += AmmoStats.OnUpdate;
+            RedOverlay.OnUpdate += BombStats.OnUpdate;
+            RedOverlay.OnUpdate += HealthStats.OnUpdate;
+
+            //quit if we click Q
+            while (Console.ReadKey().Key == ConsoleKey.Q)
+            {
+                
+            }
+
+            RedOverlay.OnUpdate -= AmmoStats.OnUpdate;
+            RedOverlay.OnUpdate -= BombStats.OnUpdate;
+            RedOverlay.OnUpdate -= HealthStats.OnUpdate;
+            RedOverlay.Shutdown();
+            timer.Dispose();
         }
     }
 }

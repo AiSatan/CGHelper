@@ -1,7 +1,6 @@
 ﻿using System.Drawing;
 using Accord.Imaging;
-using Accord.Imaging.Filters;
-using Dota2AdInfo.Helpers;
+using Red.BitmapHelpers;
 
 namespace CGHelper.Stats
 {
@@ -11,7 +10,7 @@ namespace CGHelper.Stats
 
         internal static void OnUpdate(Graphics g)
         {
-            var bmpSource = Helper.GetBitmap(703, 3, 30, 10);
+            var bmpSource = RedHelper.GetCopyFromScreen(703, 3, 30, 10);
 
             const int defBombTime = 70; //35*2
 
