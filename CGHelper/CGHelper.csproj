@@ -60,7 +60,7 @@
       <HintPath>..\packages\Red.BitmapHelper.1.0.0\lib\net40\Red.BitmapHelpers.dll</HintPath>
     </Reference>
     <Reference Include="RedOverUI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Red.RedOverUI.1.0.3\lib\net45\RedOverUI.dll</HintPath>
+      <HintPath>..\packages\Red.RedOverUI.1.0.4\lib\net45\RedOverUI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

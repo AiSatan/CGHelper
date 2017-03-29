@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Timers;
+using System.Threading;
 using CGHelper.Stats;
 using RedOverUI;
+using Timer = System.Timers.Timer;
 
 namespace CGHelper
 {
@@ -33,8 +34,8 @@ namespace CGHelper
             RedOverlay.OnUpdate -= AmmoStats.OnUpdate;
             RedOverlay.OnUpdate -= BombStats.OnUpdate;
             RedOverlay.OnUpdate -= HealthStats.OnUpdate;
-            RedOverlay.Shutdown();
             timer.Dispose();
+            RedOverlay.Shutdown();
         }
     }
 }
