@@ -31,10 +31,11 @@ namespace CGHelper
                 
             }
 
+            timer.Dispose();
+
             RedOverlay.OnUpdate -= AmmoStats.OnUpdate;
             RedOverlay.OnUpdate -= BombStats.OnUpdate;
             RedOverlay.OnUpdate -= HealthStats.OnUpdate;
-            timer.Dispose();
             RedOverlay.Shutdown();
         }
     }
