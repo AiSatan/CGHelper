@@ -12,7 +12,7 @@ namespace CGHelper.Stats
         {
             var bmpSource = RedHelper.GetCopyFromScreen(703, 3, 30, 10);
 
-            const int defBombTime = 70; //35*2
+            const int defBombTime = 80; //35*2
 
             ImageStatistics stat = new ImageStatistics(bmpSource);
 
